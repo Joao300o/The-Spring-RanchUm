@@ -627,7 +627,7 @@ Transform:
   m_GameObject: {fileID: 368908218}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.0267, y: -0.48067, z: 2.56526}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -642,14 +642,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 368908218}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62fb764048cab594988af2cbe9a642dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 8db90d653615f3240b4727e5305ee979, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GridTest
-  cube: {fileID: 1475317614}
-  blockPrefab: {fileID: 7863244603832470006, guid: 733bfe63294d670428a122e5ddc3e525, type: 3}
-  tilledSoilPrefab: {fileID: 8478597325714282555, guid: 9bc51283a454658418da60a57c8e47ed, type: 3}
-  grid: {fileID: 368908219}
-  gridInput: {fileID: 2055364227}
+  m_EditorClassIdentifier: Assembly-CSharp::FarmGrid
+  cellSize: 1
+  plantingDistancie: 3
+  playerTransform: {fileID: 171830775}
+  gridSelector: {fileID: 1475317618}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1018072606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,54 +1281,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2055364226
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2055364228}
-  - component: {fileID: 2055364227}
-  m_Layer: 0
-  m_Name: GridTestInput
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2055364227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055364226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78bae2d9051481d4fbca0b9409e7bd6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GridTestInput
-  mainCamera: {fileID: 330585545}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!4 &2055364228
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2055364226}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.87377, y: -0, z: 1.36962}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1340,7 +1291,6 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 171830775}
   - {fileID: 368908220}
-  - {fileID: 2055364228}
   - {fileID: 1475317618}
   - {fileID: 126385449}
   - {fileID: 1018072609}
