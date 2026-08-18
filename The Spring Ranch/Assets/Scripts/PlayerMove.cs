@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody playerPhysics;
     public InputAction playerMove;
     public float playerVelocity = 5f;
-    public float rotationSpeed = 10f; // velocidade da rotação (quanto maior, mais rápido gira)
+    public float rotationSpeed = 10f;
     Vector2 playerDirection;
 
     private void OnEnable()
@@ -31,23 +31,20 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Movimento
+        Vector3 moveDirection = new Vector3(playerDirection.x, 0, playerDirection.y);
         playerPhysics.linearVelocity = new Vector3(
             playerDirection.x * playerVelocity,
             playerPhysics.linearVelocity.y,
             playerDirection.y * playerVelocity
         );
-
-        // Rotação
-        Vector3 moveDir = new Vector3(playerDirection.x, 0f, playerDirection.y);
-        if (moveDir.sqrMagnitude > 0.01f)
+        if (moveDirection != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDir, Vector3.up);
-            playerPhysics.rotation = Quaternion.Slerp(
-                playerPhysics.rotation,
-                targetRotation,
-                rotationSpeed * Time.fixedDeltaTime
-            );
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(
+             transform.rotation,
+             targetRotation,
+             rotationSpeed * Time.fixedDeltaTime);
         }
+
     }
 }
