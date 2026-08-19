@@ -649,6 +649,8 @@ MonoBehaviour:
   plantingDistancie: 3
   playerTransform: {fileID: 171830775}
   gridSelector: {fileID: 1475317618}
+  gridRenderer: {fileID: 1475317616}
+  plowedPrefab: {fileID: 8478597325714282555, guid: 9bc51283a454658418da60a57c8e47ed, type: 3}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
