@@ -19,6 +19,7 @@ public class FarmGrid : MonoBehaviour
     public Renderer gridRenderer;
 
     public GameObject plowedPrefab;
+    public GameObject plantedPrefab;
 
     List<Vector2Int> occupiedCells = new List<Vector2Int>();
     Dictionary<Vector2Int, CellState> cells = new Dictionary<Vector2Int, CellState>();
@@ -75,6 +76,16 @@ public class FarmGrid : MonoBehaviour
                         cells[currentCell] = CellState.Plowed;
                         Instantiate(plowedPrefab, plowedPosition, Quaternion.identity);
                         Debug.Log("Plowed");
+                    }
+                    else if (cells[currentCell] == CellState.Plowed)
+                    {
+                        Vector3 plantedPosition = cellPosition;
+                        plantedPosition.y = 0.025f;
+                        cells[currentCell] = CellState.Planted;
+                        Instantiate(plantedPrefab, plantedPosition, Quaternion.Euler(-90f, 0, 0));
+
+
+                        Debug.Log("Planted");
                     }
                 }
 
