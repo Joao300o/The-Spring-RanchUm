@@ -1,26 +1,22 @@
 using UnityEngine;
 
-public class GrownPlanted : MonoBehaviour
+public class PlantGrowth : MonoBehaviour
 {
-    public float growthTimer;
     public float tempoParaCrescer;
-    public bool jaCresceu;
+    public GameObject proximoEstagio;
 
-    public GameObject estagioAtual;
-    public GameObject[] estagiosIniciais;
-    public GameObject[] estagiosFinais;
+    private float timer;
 
     void Update()
     {
-        if (jaCresceu) return;
+        if (proximoEstagio == null) return;
 
-        growthTimer += Time.deltaTime;
+        timer += Time.deltaTime;
 
-        if (growthTimer >= tempoParaCrescer)
+        if (timer >= tempoParaCrescer)
         {
+            Instantiate(proximoEstagio, transform.position, transform.rotation);
             Destroy(gameObject);
-            Instantiate(estagioAtual, transform.position, Quaternion.identity);
-            jaCresceu = true;
         }
     }
 }
