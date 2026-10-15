@@ -23,6 +23,7 @@ public class FarmGrid : MonoBehaviour
     public GameObject plantedPrefab;
 
     Dictionary<Vector2Int, CellState> cells = new Dictionary<Vector2Int, CellState>();
+    Dictionary<Vector2Int, GameObject> plowedCells = new Dictionary<Vector2Int, GameObject>();
 
     void Start()
     {
@@ -56,24 +57,13 @@ public class FarmGrid : MonoBehaviour
 
             Vector2Int currentCell = new Vector2Int(gridX, gridZ);
 
-            Vector3 cellPosition = new Vector3(
-                gridX * cellSize,
-                0,
-                gridZ * cellSize
-            );
+            Vector3 cellPosition = new Vector3(gridX * cellSize, 0, gridZ * cellSize);
 
-            cellPosition += new Vector3(
-                cellSize / 2,
-                0,
-                cellSize / 2
-            );
+            cellPosition += new Vector3(cellSize / 2, 0, cellSize / 2);
 
             gridSelector.position = cellPosition;
 
-            float distancePlayer = Vector3.Distance(
-                playerTransform.position,
-                cellPosition
-            );
+            float distancePlayer = Vector3.Distance(playerTransform.position, cellPosition);
 
             // Área onde é permitido plantar
             Bounds area = farmAreaRenderer.bounds;
@@ -95,13 +85,9 @@ public class FarmGrid : MonoBehaviour
 
                         cells[currentCell] = CellState.Plowed;
 
-                        Instantiate(
-                            plowedPrefab,
-                            plowedPosition,
-                            Quaternion.identity
-                        );
+                        GameObject terra = Instantiate(plowedPrefab, plowedPosition, Quaternion.identity);
 
-                        Debug.Log("Plowed");
+                        plowedCells[currentCell] = terra;
                     }
 
                     // Célula arada -> plantar
@@ -112,11 +98,7 @@ public class FarmGrid : MonoBehaviour
 
                         cells[currentCell] = CellState.Planted;
 
-                        Instantiate(
-                            plantedPrefab,
-                            plantedPosition,
-                            Quaternion.Euler(-90f, 0, 0)
-                        );
+                        Instantiate(plantedPrefab, plantedPosition, Quaternion.Euler(-90f, 0, 0));
 
                         Debug.Log("Planted");
                     }
@@ -132,5 +114,20 @@ public class FarmGrid : MonoBehaviour
                 Debug.Log("Estado: " + cells[currentCell]);
             }
         }
+    }
+    public void LimparCell(Vector2Int coordenada)
+    {
+        if (plowedCells.TryGetValue(coordenada, out GameObject terra))
+        {
+            Destroy(terra);
+            plowedCells.Remove(coordenada);
+        }
+
+        if (cells.ContainsKey(coordenada))
+        {
+            cells.Remove(coordenada);
+        }
+
+        Debug.Log("Célula limpa: " + coordenada);
     }
 }

@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 171830772}
   - component: {fileID: 171830771}
   - component: {fileID: 171830776}
+  - component: {fileID: 171830777}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -480,6 +481,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &171830777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171830770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60afe60a4e8025d45ad96964db71bb2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collect
 --- !u!1 &260095960
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,23 +823,6 @@ MonoBehaviour:
   slotItems:
   - {fileID: 11400000, guid: 4045423c90a25984c87a130d78be73b4, type: 2}
   slotAmount: 00000000
-  giveWheat:
-    m_Name: Give Wheat
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 06e29174-1349-4b6e-98eb-8be3bd396b42
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 5bc28578-d2a6-40af-b52f-9b923961b1bc
-      m_Path: <Keyboard>/e
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Give Wheat
-      m_Flags: 0
-    m_Flags: 0
   wheatItem: {fileID: 11400000, guid: 4045423c90a25984c87a130d78be73b4, type: 2}
 --- !u!4 &404634099
 Transform:
@@ -2193,7 +2189,7 @@ Transform:
   m_GameObject: {fileID: 1475317614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.08211, y: 1.62176, z: -0.49273}
+  m_LocalPosition: {x: 1058.69, y: 1.62176, z: 574.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2807,14 +2803,14 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 410087041}
+  - {fileID: 59962569}
   - {fileID: 832575519}
-  - {fileID: 1098032572}
   - {fileID: 330585546}
+  - {fileID: 1018072609}
+  - {fileID: 1098032572}
   - {fileID: 171830775}
   - {fileID: 368908220}
   - {fileID: 1475317618}
-  - {fileID: 1018072609}
-  - {fileID: 59962569}
   - {fileID: 404634099}
   - {fileID: 658681880}
   - {fileID: 751564856}
