@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1647245336422748189}
   m_Layer: 0
   m_Name: Arada
-  m_TagString: Untagged
+  m_TagString: Plowed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

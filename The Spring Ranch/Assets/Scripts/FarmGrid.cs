@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
@@ -65,7 +66,6 @@ public class FarmGrid : MonoBehaviour
 
             float distancePlayer = Vector3.Distance(playerTransform.position, cellPosition);
 
-            // Área onde é permitido plantar
             Bounds area = farmAreaRenderer.bounds;
 
             bool dentroDaArea = area.Contains(cellPosition);
@@ -98,9 +98,25 @@ public class FarmGrid : MonoBehaviour
 
                         cells[currentCell] = CellState.Planted;
 
-                        Instantiate(plantedPrefab, plantedPosition, Quaternion.Euler(-90f, 0, 0));
+                        GameObject planta = Instantiate(
+                            plantedPrefab,
+                            plantedPosition,
+                            Quaternion.Euler(-90f, 0, 0)
+                        );
 
-                        Debug.Log("Planted");
+                        // Passar a coordenada para o Collectable
+                        Collectable collectable = planta.GetComponent<Collectable>();
+
+                        if (collectable != null)
+                        {
+                            collectable.coordenada = currentCell;
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Collectable não encontrado no prefab da planta!");
+                        }
+
+                        Debug.Log("Planted na célula: " + currentCell);
                     }
                 }
             }
@@ -115,19 +131,24 @@ public class FarmGrid : MonoBehaviour
             }
         }
     }
+
     public void LimparCell(Vector2Int coordenada)
     {
+        // Destruir a terra arada registrada nessa coordenada
         if (plowedCells.TryGetValue(coordenada, out GameObject terra))
         {
-            Destroy(terra);
+            if (terra != null)
+            {
+                Destroy(terra);
+            }
+
             plowedCells.Remove(coordenada);
         }
 
-        if (cells.ContainsKey(coordenada))
-        {
-            cells.Remove(coordenada);
-        }
+        // Remover o estado da célula
+        cells.Remove(coordenada);
 
         Debug.Log("Célula limpa: " + coordenada);
+        Debug.Log("Célula vazia? " + !cells.ContainsKey(coordenada));
     }
 }
